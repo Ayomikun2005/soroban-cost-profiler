@@ -7,7 +7,7 @@ fn main() {
     println!("soroban-cost-profiler MVP (Not yet implemented)");
 
     // 1. Initialize tracer and execute WASM
-    let mut _tracer = ExecutionTracer::new();
+    let mut _tracer = ExecutionTracer::new(100);
     // let events = tracer.trace();
 
     // 2. Load DWARF source map
