@@ -19,12 +19,13 @@ impl Default for ExecutionTracer {
 }
 
 impl ExecutionTracer {
-    pub fn new(sample_rate: u64) -> Self {
-        Self {
-            events: Vec::new(),
-            current_step_cost: 0,
-            sample_rate,
-        }
+    pub fn new() -> Self {
+        Self::default()
+    }
+
+    pub fn with_sample_rate(mut self, sample_rate: u64) -> Self {
+        self.sample_rate = sample_rate;
+        self
     }
 
     pub fn record_step(&mut self, pc: usize, cpu_cost: u64) {
@@ -83,7 +84,7 @@ mod tests {
 
     #[test]
     fn test_record_step_sampling() {
-        let mut tracer = ExecutionTracer::new(100);
+        let mut tracer = ExecutionTracer::new().with_sample_rate(100);
 
         // Add 50 cost (no event should fire)
         tracer.record_step(1, 50);
@@ -103,7 +104,7 @@ mod tests {
 
     #[test]
     fn test_record_call_and_return() {
-        let mut tracer = ExecutionTracer::new(100);
+        let mut tracer = ExecutionTracer::new().with_sample_rate(100);
 
         // Call and return should bypass sampling
         tracer.record_call(1, 10);
