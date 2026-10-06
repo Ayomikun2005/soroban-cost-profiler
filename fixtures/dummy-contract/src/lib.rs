@@ -16,6 +16,7 @@ impl DummyContract {
     ///
     /// The default test uses 10,000 iterations so the profiler has a
     /// non-trivial amount of work to measure without hitting CI timeouts.
+    /// This function is intentionally CPU-bound.
     pub fn compute_heavy_loop(env: &Env, iterations: u32) -> u64 {
         // Silence the unused-parameter warning while keeping the standard
         // contract function signature expected by the Soroban SDK macros.

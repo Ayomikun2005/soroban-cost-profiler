@@ -2,6 +2,7 @@
 name = "dummy-contract"
 version = "0.1.0"
 edition = "2021"
+description = "A dummy Soroban contract used as a fixture for execution tracing"
 
 [lib]
 crate-type = ["cdylib"]
