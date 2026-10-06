@@ -9,9 +9,7 @@ pub struct ExecutionTracer {
 
 impl ExecutionTracer {
     pub fn new() -> Self {
-        Self {
-            events: Vec::new(),
-        }
+        Self { events: Vec::new() }
     }
 
     pub fn trace(&mut self) -> Vec<TraceEvent> {
